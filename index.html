@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eitan & Temima | Gift Registry</title>
+
+  <meta name="description" content="A clean black‑and‑white registry page for Eitan & Temima with a Save‑the‑Date hero and elegant starfield background." />
+  <meta property="og:title" content="Eitan & Temima | Gift Registry" />
+  <meta property="og:description" content="Celebrate with us. View our registries." />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* -------------------------------------------------------------
+       Theme
+    ------------------------------------------------------------- */
+    :root {
+      --title-font: 'Playfair Display', Georgia, serif;
+      --body-font: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+      --bg: #0b0b0b;          /* deep black */
+      --panel: #111111;       /* near black */
+      --ink: #f3f3f3;         /* off white */
+      --muted: #bdbdbd;       /* muted grey */
+      --ring: rgba(255,255,255,.12);
+      --ring-hover: rgba(255,255,255,.24);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--body-font);
+      background: var(--bg);
+      color: var(--ink);
+      position: relative; /* establish stacking context for starfield */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .font-title {
+      font-family: var(--title-font);
+    }
+
+    .panel {
+      background: var(--panel);
+    }
+
+    .hairline {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+    }
+
+    /* -------------------------------------------------------------
+       Starfield (background only)
+    ------------------------------------------------------------- */
+    .starfield {
+      position: fixed;
+      inset: 0;
+      z-index: 0;              /* underneath all content */
+      overflow: hidden;
+      pointer-events: none;    /* decorative only */
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 9999px;
+      opacity: .8;
+      filter: drop-shadow(0 0 6px rgba(255,255,255,.35));
+    }
+
+    /* four-point sparkle arms */
+    .star::before,
+    .star::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 8px;
+      height: 1px;
+      background: #ffffff;
+      border-radius: 2px;
+      opacity: .7;
+    }
+
+    .star::after {
+      transform: translate(-50%, -50%) rotate(135deg);
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: .3; transform: scale(.85); }
+      50%       { opacity: 1;  transform: scale(1.2); }
+    }
+
+    /* Scroll cue */
+    @keyframes bounceSoft {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(6px); }
+    }
+
+    .animate-bounce-soft {
+      animation: bounceSoft 1.6s ease-in-out infinite;
+    }
+
+    /* Accessibility: respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-bounce-soft { animation: none !important; }
+      .star { animation: none !important; }
+    }
+  </style>
+</head>
+
+<body class="selection:bg-white/10 selection:text-white">
+
+  <!-- Background starfield (background only, not over images) -->
+  <div id="starfield" class="starfield" aria-hidden="true"></div>
+
+  <!-- =========================================================== -->
+  <!-- HERO                                                        -->
+  <!-- =========================================================== -->
+  <section class="relative z-10 max-w-6xl mx-auto px-6 pt-[calc(env(safe-area-inset-top,0px)+20px)] min-h-[100svh] flex flex-col pb-0">
+
+    <figure class="relative rounded-[28px] overflow-hidden shadow-2xl ring-1 ring-white/10 flex-1">
+
+      <!-- Save the Date image: replace the src if your filename differs -->
+      <img
+        src="save-the-date.png"
+        alt="Save the date — Temima & Eitan — 18.01.2026"
+        class="block w-full h-full object-cover"
+      />
+
+      <!-- Subtle top/bottom gradient: keeps top rich and hides peek at bottom -->
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0"
+        style="background: linear-gradient(180deg,
+                 rgba(11,11,11,.55) 0%,
+                 rgba(11,11,11,0) 20%,
+                 rgba(11,11,11,0) 75%,
+                 rgba(11,11,11,.60) 100%);">
+      </div>
+
+    </figure>
+
+    <!-- Scroll cue anchored to hero bottom -->
+    <div class="mt-6 mb-6">
+      <a href="#registry" class="group block w-max mx-auto">
+        <span class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 ring-1 ring-white/15 hover:ring-white/25 transition">
+          <span class="text-sm tracking-wide">View registries</span>
+          <svg
+            width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2"
+            class="animate-bounce-soft">
+            <path d="M12 5v14"/>
+            <path d="M5 12l7 7 7-7"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+
+  </section>
+
+  <!-- =========================================================== -->
+  <!-- INTRO                                                       -->
+  <!-- =========================================================== -->
+  <section class="relative z-10 max-w-3xl mx-auto px-6 pb-10 mt-8 md:mt-12">
+    <div class="text-center">
+      <h1 class="font-title text-3xl sm:text-4xl md:text-5xl tracking-tight text-white">
+        Eitan &amp; Temima
+      </h1>
+      <p class="mt-3 text-neutral-300 leading-relaxed text-base sm:text-lg">
+        Thank you for celebrating with us. If you’d like to gift something, our
+        registries live below — one focused on everyday home staples, one on local appliances.
+      </p>
+    </div>
+    <div class="hairline mt-8 mx-auto"></div>
+  </section>
+
+  <!-- =========================================================== -->
+  <!-- REGISTRIES                                                  -->
+  <!-- =========================================================== -->
+  <section id="registry" class="relative z-10 max-w-5xl mx-auto px-6 pb-24 sm:pb-28">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+
+      <!-- Amazon Card -->
+      <a
+        href="https://www.amazon.com/wedding/registry/EXAMPLE"
+        target="_blank" rel="noopener"
+        class="group block rounded-3xl panel ring-1 ring-[color:var(--ring)] hover:ring-[color:var(--ring-hover)] transition hover:-translate-y-0.5">
+
+        <div class="p-6 sm:p-7 md:p-9 flex items-center gap-5 sm:gap-6">
+
+          <div class="shrink-0 grid place-items-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/5 ring-1 ring-white/10">
+            <!-- Elegant cart icon -->
+            <svg
+              width="40" height="40" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.6"
+              class="text-white/90"
+              aria-hidden="true">
+              <circle cx="9" cy="20" r="1.6"/>
+              <circle cx="17" cy="20" r="1.6"/>
+              <path d="M3 4h2l2 12h10l2-8H6"/>
+            </svg>
+          </div>
+
+          <div class="min-w-0">
+            <h2 class="font-title text-2xl text-white">
+              Amazon Registry
+            </h2>
+            <p class="mt-2 text-sm text-neutral-300">
+              Everyday kitchen &amp; home — dishes, cookware, organizers and the useful little things
+              that make a house feel like home.
+            </p>
+            <span class="mt-4 inline-flex items-center gap-2 text-sm text-white/80 group-hover:text-white">
+              Open registry
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7"/>
+                <path d="M7 7h10v10"/>
+              </svg>
+            </span>
+          </div>
+
+        </div>
+
+      </a>
+
+      <!-- Labaiit Card -->
+      <a
+        href="https://labaiit.com/registry/eitan-temima"
+        target="_blank" rel="noopener"
+        class="group block rounded-3xl panel ring-1 ring-[color:var(--ring)] hover:ring-[color:var(--ring-hover)] transition hover:-translate-y-0.5">
+
+        <div class="p-6 sm:p-7 md:p-9 flex items-center gap-5 sm:gap-6">
+
+          <div class="shrink-0 grid place-items-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/5 ring-1 ring-white/10">
+            <!-- Appliance icon -->
+            <svg
+              width="40" height="40" viewBox="0 0 64 64" fill="none"
+              stroke="currentColor" stroke-width="1.6"
+              class="text-white/90"
+              aria-hidden="true">
+              <rect x="18" y="8" width="28" height="48" rx="4"/>
+              <line x1="18" y1="28" x2="46" y2="28"/>
+              <circle cx="23" cy="20" r="2" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+
+          <div class="min-w-0">
+            <h2 class="font-title text-2xl text-white">
+              Labaiit Registry
+            </h2>
+            <p class="mt-2 text-sm text-neutral-300">
+              Israel‑ready appliances &amp; practical home gear — reliable, local, and built for our day‑to‑day life.
+            </p>
+            <span class="mt-4 inline-flex items-center gap-2 text-sm text-white/80 group-hover:text-white">
+              Open registry
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7"/>
+                <path d="M7 7h10v10"/>
+              </svg>
+            </span>
+          </div>
+
+        </div>
+
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================== -->
+  <!-- FOOTER                                                      -->
+  <!-- =========================================================== -->
+  <footer class="relative z-10 px-6 pb-[calc(env(safe-area-inset-bottom,0px)+48px)]">
+    <div class="max-w-5xl mx-auto text-center text-xs text-neutral-400">
+      <p>
+        BS"D • © <span id="year"></span> Eitan &amp; Temima
+      </p>
+    </div>
+  </footer>
+
+  <!-- =========================================================== -->
+  <!-- SCRIPTS                                                     -->
+  <!-- =========================================================== -->
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ================= Starfield (background only) =================
+    const sf = document.getElementById('starfield');
+
+    function seedStars() {
+      const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+      const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+      const mobile = window.matchMedia('(max-width: 640px)').matches;
+      const baseDensity = mobile ? 140 : 220; // tune here
+      const COUNT = Math.min(baseDensity, Math.floor(vw / (mobile ? 6 : 4)));
+
+      sf.innerHTML = '';
+
+      for (let i = 0; i < COUNT; i++) {
+        const s = document.createElement('span');
+        s.className = 'star';
+
+        // random position across entire viewport
+        s.style.left = Math.random() * vw + 'px';
+        s.style.top  = Math.random() * vh + 'px';
+
+        // size variation
+        const size = (mobile ? 0.8 : 1.0) + Math.random() * (mobile ? 1.8 : 2.5);
+        s.style.width  = size + 'px';
+        s.style.height = size + 'px';
+
+        // varied twinkle timings
+        const dur = ((mobile ? 3.0 : 2.2) + Math.random() * (mobile ? 2.8 : 2.6)).toFixed(2);
+        const delay = (-Math.random() * 3).toFixed(2);
+        s.style.animation = `twinkle ${dur}s ease-in-out ${delay}s infinite`;
+
+        sf.appendChild(s);
+      }
+    }
+
+    seedStars();
+
+    // Reseed on resize, debounced
+    window.addEventListener('resize', () => {
+      clearTimeout(window.__starTO);
+      window.__starTO = setTimeout(seedStars, 150);
+    });
+
+    // Reduced motion: freeze stars
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      sf.querySelectorAll('.star').forEach(el => {
+        el.style.animation = 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>
