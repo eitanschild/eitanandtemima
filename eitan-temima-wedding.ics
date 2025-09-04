@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Eitan & Temima//Save the Date//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:eitan-temima-20260118@example.com
+SUMMARY:Eitan & Temima — Wedding
+DTSTAMP:20250101T120000Z
+DTSTART;VALUE=DATE:20260118
+DTEND;VALUE=DATE:20260119
+LOCATION:
+DESCRIPTION:We can’t wait to celebrate together! Registry links are on the site.
+URL:https://eitanschild.github.io/eitanandtemima/
+END:VEVENT
+END:VCALENDAR
