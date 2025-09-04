@@ -136,25 +136,32 @@
 
     <figure class="relative rounded-[28px] overflow-hidden shadow-2xl ring-1 ring-white/10 flex-1">
 
-      <!-- Save the Date image: replace the src if your filename differs -->
-      <img
-        src="save-the-date.png"
-        alt="Save the date — Temima & Eitan — 18.01.2026"
-        class="block w-full h-full object-cover"
-      />
-
-      <!-- Subtle top/bottom gradient: keeps top rich and hides peek at bottom -->
-      <div
-        aria-hidden="true"
-        class="pointer-events-none absolute inset-0"
-        style="background: linear-gradient(180deg,
-                 rgba(11,11,11,.55) 0%,
-                 rgba(11,11,11,0) 20%,
-                 rgba(11,11,11,0) 75%,
-                 rgba(11,11,11,.60) 100%);">
-      </div>
-
-    </figure>
+        <!-- Desktop version -->
+        <img
+          src="save-the-date-desktop.png"
+          alt="Save the date — Temima & Eitan — 18.01.2026"
+          class="hidden sm:block w-full h-full object-cover"
+        />
+      
+        <!-- Mobile version -->
+        <img
+          src="save-the-date-mobile.png"
+          alt="Save the date — Temima & Eitan — 18.01.2026"
+          class="block sm:hidden w-full h-full object-cover"
+        />
+      
+        <!-- Subtle top/bottom gradient -->
+        <div
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-0"
+          style="background: linear-gradient(180deg,
+                   rgba(11,11,11,.55) 0%,
+                   rgba(11,11,11,0) 20%,
+                   rgba(11,11,11,0) 75%,
+                   rgba(11,11,11,.60) 100%);">
+        </div>
+      
+      </figure>      
 
     <!-- Scroll cue anchored to hero bottom -->
     <div class="mt-6 mb-6">
@@ -199,7 +206,7 @@
 
       <!-- Amazon Card -->
       <a
-        href="https://www.amazon.com/wedding/registry/EXAMPLE"
+        href="https://www.amazon.com/wedding/registry/1NT34S5ZQJ603"
         target="_blank" rel="noopener"
         class="group block rounded-3xl panel ring-1 ring-[color:var(--ring)] hover:ring-[color:var(--ring-hover)] transition hover:-translate-y-0.5">
 
@@ -262,7 +269,7 @@
 
           <div class="min-w-0">
             <h2 class="font-title text-2xl text-white">
-              Labaiit Registry
+              La'bayit Registry
             </h2>
             <p class="mt-2 text-sm text-neutral-300">
               Israel‑ready appliances &amp; practical home gear — reliable, local, and built for our day‑to‑day life.
@@ -355,3 +362,4 @@
 
 </body>
 </html>
+
